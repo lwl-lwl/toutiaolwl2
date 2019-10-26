@@ -1,5 +1,8 @@
 <template>
-  <div id="app">哈哈</div>
+  <div id="app">
+    <!-- 一级路由 -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
