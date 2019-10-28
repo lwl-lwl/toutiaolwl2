@@ -4,10 +4,9 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 // 引入登录页面组件
 import Login from '@/views/login'
-
-import Notfund from '@/views/404'
 import Home from '@/views/home'
-
+import Welcome from '@/views/welcome'
+import Notfund from '@/views/404'
 Vue.use(VueRouter)
 // 实例化路由并导出
 export default new VueRouter({
@@ -20,7 +19,10 @@ export default new VueRouter({
     },
     {
       path: '/',
-      component: Home
+      component: Home,
+      children: [
+        { path: '/', component: Welcome }
+      ]
     },
     {
       path: '*',
