@@ -7,9 +7,10 @@ import Login from '@/views/login'
 import Home from '@/views/home'
 import Welcome from '@/views/welcome'
 import Notfund from '@/views/404'
+import local from '@/utils/local'
 Vue.use(VueRouter)
 // 实例化路由并导出
-export default new VueRouter({
+const router = new VueRouter({
   routes: [
     {
       // 导入main.js
@@ -29,4 +30,11 @@ export default new VueRouter({
       component: Notfund
     }
   ]
+})
+
+export default router
+router.beforeEach((to, from, next) => {
+  const user = local.getUser()
+  if (to.path !== '/login' && !user) return next('/login')
+  next()
 })

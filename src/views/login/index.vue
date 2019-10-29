@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     const checkMobile = (rule, value, callback) => {
@@ -37,8 +38,8 @@ export default {
     }
     return {
       LoginForm: {
-        mobile: '',
-        code: ''
+        mobile: '18845761524',
+        code: '246810'
       },
       LoginRules: {
         mobile: [
@@ -61,6 +62,7 @@ export default {
             .post('authorizations', this.LoginForm)
             .then(res => {
               // 成功
+              local.setUser(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {
