@@ -56,19 +56,19 @@ export default {
   methods: {
     login () {
       // 对整个表单进行校验
-      this.$refs['loginForm'].validate(valid => {
+      this.$refs['loginForm'].validate(async valid => {
         if (valid) {
-          this.$http
-            .post('authorizations', this.LoginForm)
-            .then(res => {
-              // 成功
-              local.setUser(res.data.data)
-              this.$router.push('/')
-            })
-            .catch(() => {
-              // 失败 提示
-              this.$message.error('手机号或验证码错误')
-            })
+          try {
+            const {
+              data: { data }
+            } = await this.$http.post('authorizations', this.LoginForm)
+            // 成功
+            local.setUser(data)
+            this.$router.push('/')
+          } catch (e) {
+            // 失败 提示
+            this.$message.error('手机号或验证码错误')
+          }
         }
       })
     }
