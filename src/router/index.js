@@ -8,6 +8,7 @@ import Home from '@/views/home'
 import Welcome from '@/views/welcome'
 import Notfund from '@/views/404'
 import local from '@/utils/local'
+import Article from '@/views/article/article'
 Vue.use(VueRouter)
 // 实例化路由并导出
 const router = new VueRouter({
@@ -22,7 +23,8 @@ const router = new VueRouter({
       path: '/',
       component: Home,
       children: [
-        { path: '/', component: Welcome }
+        { path: '/', component: Welcome },
+        { path: '/article', component: Article }
       ]
     },
     {
