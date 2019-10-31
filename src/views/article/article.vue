@@ -21,9 +21,9 @@
           <el-select v-model="reqParams.channel_id" placeholder="请选择">
             <el-option
               v-for="item in channelOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -70,11 +70,21 @@ export default {
         begin_pubdate: null,
         end_pubdate: null
       },
-      channelOptions: [
-        { value: 1, label: 'java' },
-        { value: 2, label: '前端' }
-      ],
+      channelOptions: [],
       dateArr: []
+    }
+  },
+  created () {
+    this.getchannelOptions()
+  },
+  methods: {
+    async getchannelOptions () {
+      // 获取数据
+      const {
+        data: { data }
+      } = await this.$http.get('channels')
+      // 赋值
+      this.channelOptions = data.channels
     }
   }
 }
