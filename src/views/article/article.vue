@@ -71,8 +71,14 @@
         </el-table-column>
         <el-table-column label="发布时间" prop="pubdate"></el-table-column>
         <el-table-column label="操作">
-          <template>
-            <el-button type="primary" icon="el-icon-edit" circle plain></el-button>
+          <template slot-scope="scope">
+            <el-button
+              type="primary"
+              icon="el-icon-edit"
+              circle
+              plain
+              @click="toEdit(scope.row.id)"
+            ></el-button>
             <el-button type="danger" icon="el-icon-delete" circle plain></el-button>
           </template>
         </el-table-column>
@@ -155,6 +161,9 @@ export default {
         this.reqParams.begin_pubdate = null
         this.reqParams.end_pubdate = null
       }
+    },
+    toEdit (id) {
+      this.$router.push({ path: '/publish', query: { id } })
     }
   }
 }
