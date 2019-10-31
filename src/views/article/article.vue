@@ -18,7 +18,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道：">
-          <el-select v-model="reqParams.channel_id" placeholder="请选择">
+          <el-select v-model="reqParams.channel_id" placeholder="请选择" clearable>
             <el-option
               v-for="item in channelOptions"
               :key="item.id"
@@ -34,10 +34,12 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+            @change="changeDate"
+            value-format="yyyy-MM-dd"
           ></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">筛选</el-button>
+          <el-button type="primary" @click="search">筛选</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -139,6 +141,20 @@ export default {
       // 修改当前页码为新的页码
       this.reqParams.page = newPage
       this.getArticles()
+    },
+    search () {
+      if (this.reqParams.channel_id === '') this.reqParams.channel_id = null
+      this.reqParams.page = 1
+      this.getArticles()
+    },
+    changeDate (dateArr) {
+      if (dateArr) {
+        this.reqParams.begin_pubdate = dateArr[0]
+        this.reqParams.end_pubdate = dateArr[1]
+      } else {
+        this.reqParams.begin_pubdate = null
+        this.reqParams.end_pubdate = null
+      }
     }
   }
 }
