@@ -3,10 +3,7 @@
     <!-- 筛选条件布局 -->
     <el-card>
       <div slot="header">
-        <el-breadcrumb separator-class="='el-icon-arrow-right">
-          <el-breadcrumb-item :to="{path:'/'}">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>内容管理</el-breadcrumb-item>
-        </el-breadcrumb>
+        <my-bread>内容管理</my-bread>
       </div>
       <!-- 表单 -->
       <el-form label-width="80px" size="small">
