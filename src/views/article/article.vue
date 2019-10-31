@@ -42,6 +42,21 @@
       </el-form>
     </el-card>
     <!-- 筛选结果布局 -->
+    <el-card style="margin-top:20px">
+      <div slot="header">
+        <span>根据筛选条件共查询到 0 条结果：</span>
+      </div>
+      <!-- 表格 -->
+      <el-table>
+        <el-table-column label="封面"></el-table-column>
+        <el-table-column label="标题"></el-table-column>
+        <el-table-column label="状态"></el-table-column>
+        <el-table-column label="发布时间"></el-table-column>
+        <el-table-column label="操作"></el-table-column>
+      </el-table>
+      <!-- 分页 -->
+      <el-pagination style="margin-top:20px" background layout="prev,pager,next" :total="1000"></el-pagination>
+    </el-card>
   </div>
 </template>
 
