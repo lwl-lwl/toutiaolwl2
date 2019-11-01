@@ -79,7 +79,13 @@
               plain
               @click="toEdit(scope.row.id)"
             ></el-button>
-            <el-button type="danger" icon="el-icon-delete" circle plain></el-button>
+            <el-button
+              @click="delArticle(scope.row.id)"
+              type="danger"
+              icon="el-icon-delete"
+              circle
+              plain
+            ></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -164,6 +170,11 @@ export default {
     },
     toEdit (id) {
       this.$router.push({ path: '/publish', query: { id } })
+    },
+    async delArticle (id) {
+      await this.$http.delete(`articles/${id}`)
+      this.$message.success('删除成功')
+      this.getArticles()
     }
   }
 }

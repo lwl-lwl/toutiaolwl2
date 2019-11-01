@@ -1,9 +1,17 @@
 import axios from 'axios'
 import local from '@/utils/local'
 import router from '@/router'
+import JSONBIG from 'json-bigint'
 
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 
+axios.defaults.transformResponse = [(data) => {
+  try {
+    return JSONBIG.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
 // 请求拦截器
 axios.interceptors.request.use(config => {
   // 1. 获取token
