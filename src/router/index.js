@@ -9,6 +9,7 @@ import Welcome from '@/views/welcome'
 import Notfund from '@/views/404'
 import local from '@/utils/local'
 import Article from '@/views/article/article'
+import Image from '../views/image'
 Vue.use(VueRouter)
 // 实例化路由并导出
 const router = new VueRouter({
@@ -24,7 +25,8 @@ const router = new VueRouter({
       component: Home,
       children: [
         { path: '/', component: Welcome },
-        { path: '/article', component: Article }
+        { path: '/article', component: Article },
+        { path: '/image', component: Image }
       ]
     },
     {
