@@ -10,6 +10,8 @@ import Notfund from '@/views/404'
 import local from '@/utils/local'
 import Article from '@/views/article/article'
 import Image from '../views/image'
+import Publish from '@/views/publish'
+import Comment from '@/views/comment'
 Vue.use(VueRouter)
 // 实例化路由并导出
 const router = new VueRouter({
@@ -26,7 +28,9 @@ const router = new VueRouter({
       children: [
         { path: '/', component: Welcome },
         { path: '/article', component: Article },
-        { path: '/image', component: Image }
+        { path: '/image', component: Image },
+        { path: '/publish', component: Publish },
+        { path: '/comment', component: Comment }
       ]
     },
     {
