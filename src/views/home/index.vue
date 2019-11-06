@@ -73,6 +73,7 @@
 
 <script>
 import local from '@/utils/local'
+import eventBus from '@/eventBus'
 export default {
   data () {
     return {
@@ -102,6 +103,12 @@ export default {
     const user = local.getUser() || {}
     this.photo = user.photo
     this.name = user.name
+    eventBus.$on('updateName', (name) => {
+      this.name = name
+    })
+    eventBus.$on('updatePhoto', (photo) => {
+      this.photo = photo
+    })
   }
 }
 </script>
