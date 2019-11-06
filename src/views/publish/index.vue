@@ -84,6 +84,7 @@ export default {
   },
   methods: {
     async create (draft) {
+      console.log(this.articleForm)
       await this.$http.post(`articles?draft=${draft}`, this.articleForm)
       // 成功
       this.$message.success(draft ? '存入草稿成功' : '发表成功')
