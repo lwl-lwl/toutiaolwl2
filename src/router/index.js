@@ -13,6 +13,7 @@ import Image from '../views/image'
 import Publish from '@/views/publish'
 import Comment from '@/views/comment'
 import Setting from '@/views/setting'
+import Fans from '@/views/fans'
 Vue.use(VueRouter)
 // 实例化路由并导出
 const router = new VueRouter({
@@ -32,7 +33,8 @@ const router = new VueRouter({
         { path: '/image', component: Image },
         { path: '/publish', component: Publish },
         { path: '/comment', component: Comment },
-        { path: '/setting', component: Setting }
+        { path: '/setting', component: Setting },
+        { path: '/fans', component: Fans }
       ]
     },
     {
